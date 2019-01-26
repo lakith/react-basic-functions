@@ -1,0 +1,75 @@
+1) Coppy nested data in a immutable way.
+
+  	state = {
+        orderForm:{
+                name:{
+                    elementType:"input",
+                    elementConfig :{
+                        type:'text',
+                        placeholder: 'Your Name'
+                    },
+                    value:''
+                },
+                street:{
+                    elementType:"input",
+                    elementConfig :{
+                        type:'text',
+                        placeholder: 'Your Street'
+                    },
+                    value:''
+                },
+                zipcode:{
+                    elementType:"input",
+                    elementConfig :{
+                        type:'text',
+                        placeholder: 'Your ZipCode'
+                    },
+                    value:''
+                },
+                country:{
+                    elementType:"input",
+                    elementConfig :{
+                        type:'text',
+                        placeholder: 'Your Country'
+                    },
+                    value:''
+                },
+                email:{
+                    elementType:"input",
+                    elementConfig :{
+                        type:'text',
+                        placeholder: 'Your Email'
+                    },
+                    value:''
+                },
+                delivary:{
+                    elementType:"select",
+                    elementConfig :{
+                        options:[
+                            {value:'fastest', displayValue:'Fastest'},
+                            {value:'cheapest', displayValue:'Cheapest'}
+                        ]
+                    },
+                    value:''
+                }
+        },
+        loading:false
+    }
+
+
+	changeHandler = (event,inputIdentifier)=>{
+        //console.log(event.target.value); // print the event trigger data
+        const updatedOrderForm = {
+            ...this.state.orderForm
+        };
+
+        const updatedFormElement = {
+            ...updatedOrderForm[inputIdentifier]
+        }
+
+        updatedFormElement.value = event.target.value;
+        updatedOrderForm[inputIdentifier] = updatedFormElement;
+        this.setState({
+            orderForm:updatedOrderForm
+        })
+    }
